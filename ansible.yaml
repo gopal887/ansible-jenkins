@@ -1,0 +1,15 @@
+---
+- name: installing apache2
+  become: yes
+  hosts: localhost
+  tasks:
+    - name: install apache and update packages
+      ansible.builtin.apt:
+        name: apache2
+        update_cache: yes
+        state: present
+    - name: restart apache
+      ansible.builtin.systemd:
+        name: apache2
+        enabled: yes
+        state: started

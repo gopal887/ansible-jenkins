@@ -1,0 +1,12 @@
+pipeline{
+    agent any
+    stages{
+        stage('cvs'){
+            steps{
+                sh 'terraform init'
+                sh 'terraform plan'
+                sh 'terraform apply'
+            }
+        }
+    }
+}
